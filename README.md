@@ -110,3 +110,8 @@ and the response will be:
         username: "tlaudahl",
         status: "Logged In!"
     }
+    
+    
+### `DELETE https://use-my-tool.herokuapp.com/tools/:id`
+
+Delete a specific tool from the database
