@@ -4,7 +4,7 @@ const db = require('../database/db-config');
 const Tools = require('./tool-model');
 
 router.get('/', (req, res) => {
-    db.select('t.name as Name', 't.price as Price', 't.toolImg as Image', 'u.username as Owner', 'u.location as Location')
+    db.select('t.id as id', 't.name as Name', 't.price as Price', 't.toolImg as Image', 'u.username as Owner', 'u.location as Location')
     .from('tools as t')
     .join('users as u', 'u.id', '=', 't.ownerId')
     .then(list => res.status(200).json(list))
