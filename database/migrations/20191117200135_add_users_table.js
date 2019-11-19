@@ -12,6 +12,8 @@ exports.up = function(knex) {
         tbl.string('name').notNullable();
         tbl.string('toolImg');
         tbl.integer('price').notNullable();
+        tbl.integer('loaned').defaultTo(0).notNullable();
+        tbl.integer('loaned_to').unsigned().references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
         tbl.integer('ownerId').unsigned().notNullable().references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
     })
 };
