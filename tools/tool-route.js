@@ -18,12 +18,44 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(500).json({ error: "Could not find a user with that ID" }))
 })
 
-router.put('/:id', (req, res) => {
+router.put('/update/:id', (req, res) => {
     const changes = req.body;
 
     Tools.findById(req.params.id).update(changes)
     .then(tool => res.status(200).json(tool))
     .catch(err => res.status(500).json({ error: "Could not update that tool" }))
+})
+
+router.post('/', (req,res) => {
+    const newTool = req.body;
+
+    if(!newTool.name) {
+        res.status(400).json({ error: "You must provide a name for the tool" })
+    } else if (!newTool.price) {
+        res.status(400).json({ error: "You must provide a price for the tool" })
+    } else if (!newTool.ownerId) {
+        res.status(400).json({ error: "You must the ownerId of the tool" })
+    } else {
+        db('tools').insert(newTool)
+        .then(ids => {
+            Tools.findById(ids[0])
+            .then(tool => res.status(201).json(tool))
+        })
+        .catch(err => res.status(400).json({ error: "Failed to add the tool to the database" }))
+    }
+})
+
+router.delete('/:id', (req, res) => {
+    db('tools').where({ id: req.params.id })
+    .del()
+    .then(count => {
+        if(count > 0) {
+            res.status(204).end();
+        } else {
+            res.status(404).json({ message: "Tool with that ID not found" })
+        }
+    })
+    .catch(err => res.status(500).json({ error: "Error deleting tool from database"}))
 })
 
 
