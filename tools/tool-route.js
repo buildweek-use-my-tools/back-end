@@ -39,6 +39,7 @@ router.post('/', (req,res) => {
         .then(ids => {
             Tools.findById(ids[0])
             .then(tool => res.status(201).json(tool))
+            .catch(err => res.status(500).json({ error: "Error while retreiving updated tool" }))
         })
         .catch(err => res.status(500).json({ error: "Failed to add the tool to the database" }))
     }
