@@ -13,7 +13,7 @@ exports.up = function(knex) {
         tbl.string('toolImg');
         tbl.integer('price').notNullable();
         tbl.integer('loaned').defaultTo(0).notNullable();
-        tbl.integer('loaned_to').unsigned().references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
+        tbl.string('loaned_to').defaultTo('').notNullable();
         tbl.integer('ownerId').unsigned().notNullable().references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
     })
 };
