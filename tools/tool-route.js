@@ -40,7 +40,7 @@ router.post('/', (req,res) => {
             Tools.findById(ids[0])
             .then(tool => res.status(201).json(tool))
         })
-        .catch(err => res.status(400).json({ error: "Failed to add the tool to the database" }))
+        .catch(err => res.status(500).json({ error: "Failed to add the tool to the database" }))
     }
 })
 
