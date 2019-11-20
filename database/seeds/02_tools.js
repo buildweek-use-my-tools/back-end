@@ -1,15 +1,15 @@
 
 exports.seed = function(knex) {
       return knex('tools').insert([
-        { name: 'Saw', toolImg: '', price: 20, loaned: 1, loaned_to: 5, ownerId: 1 },
-        { name: 'Jackhammer', toolImg: '', price: 20, loaned: 1, loaned_to: 5, ownerId: 1 },
-        { name: 'Torque Wrench', toolImg: '', price: 20, loaned: 1, loaned_to: 3, ownerId: 2 },
-        { name: '1/4 10mm', toolImg: '', price: 20, loaned: 1, loaned_to: 3, ownerId: 2 },
-        { name: 'Drill', toolImg: '', price: 20, loaned: 1, loaned_to: 4, ownerId: 3 },
-        { name: 'Table Saw', toolImg: '', price: 20, loaned: 1, loaned_to: 4, ownerId: 3 },
-        { name: 'Air Compressor', toolImg: '', price: 20, loaned: 1, loaned_to: 2, ownerId: 4 },
-        { name: 'TIG Welder', toolImg: '', price: 20, loaned: 1, loaned_to: 2, ownerId: 4 },
-        { name: 'Breaker Bar', toolImg: '', price: 20, loaned: 1, loaned_to: 1, ownerId: 5 },
-        { name: 'Nail Gun', toolImg: '', price: 20, loaned: 1, loaned_to: 1, ownerId: 5 }
+        { name: 'Saw', toolImg: 'https://tinyurl.com/syhdc4b', price: 20, borrowed: 0, ownerId: 1 },
+        { name: 'Jackhammer', toolImg: 'https://tinyurl.com/u4yee2l', price: 20, borrowed: 0, ownerId: 1 },
+        { name: 'Torque Wrench', toolImg: 'https://tinyurl.com/vzcbm2m', price: 20, borrowed: 0, ownerId: 2 },
+        { name: '1/4 Socket Set', toolImg: 'https://tinyurl.com/vcnq2f9', price: 20, borrowed: 0, ownerId: 2 },
+        { name: 'Drill', toolImg: 'https://tinyurl.com/wvd5fmw', price: 20, borrowed: 0, ownerId: 3 },
+        { name: 'Table Saw', toolImg: 'https://tinyurl.com/wyngywd', price: 20, borrowed: 0, ownerId: 3 },
+        { name: 'Air Compressor', toolImg: 'https://tinyurl.com/uqolc5w', price: 20, borrowed: 0, ownerId: 4 },
+        { name: 'TIG Welder', toolImg: 'https://tinyurl.com/vw9uxqm', price: 20, borrowed: 0, ownerId: 4 },
+        { name: 'Breaker Bar', toolImg: 'https://tinyurl.com/t75qyuk', price: 20, borrowed: 0, ownerId: 5 },
+        { name: 'Nail Gun', toolImg: 'https://tinyurl.com/u62j4px', price: 20, borrowed: 0, ownerId: 5 }
       ]);
 };
