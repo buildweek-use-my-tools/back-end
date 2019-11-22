@@ -4,17 +4,17 @@ const db = require('../database/db-config');
 const Tools = require('./tool-model');
 
 router.get('/', (req, res) => {
-    db.select('t.id as id', 't.name as Name', 't.price as Price', 't.toolImg as Image', 'u.username as Owner', 'u.location as Location')
+    db.select('t.borrowed as Borrowed', 't.borrowed_to as BorrowedTo', 't.id as id', 't.name as Name', 't.price as Price', 't.toolImg as Image', 'u.username as Owner', 'u.location as Location')
     .from('tools as t')
     .join('users as u', 'u.id', '=', 't.ownerId')
     .then(list => res.status(200).json(list))
-    .catch(err => res.status(500).json({ error: "Could not find a user with that ID" }))
+    .catch(err => res.status(500).json({ error: "Could not retrieve the tools from the database" }))
 })
 
 router.get('/:id', (req, res) => {
     Tools.findUserTools(req.params.id)
     .then(tools => res.status(200).json({ tools }))
-    .catch(err => res.status(500).json({ error: "Could not find a user with that ID" }))
+    .catch(err => res.status(500).json({ error: "Could not find a tool with that ID" }))
 })
 
 router.put('/update/:id', (req, res) => {
@@ -37,10 +37,9 @@ router.post('/', (req,res) => {
     } else {
         db('tools').insert(newTool)
         .then(ids => {
-            Tools.findById(ids[0])
-            .then(tool => res.status(201).json(tool))
+            res.status(201).end();
         })
-        .catch(err => res.status(400).json({ error: "Failed to add the tool to the database" }))
+        .catch(err => res.status(500).json({ error: "Failed to add the tool to the database" }))
     }
 })
 
